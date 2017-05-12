@@ -6,7 +6,7 @@
 #
 
 # packages needed
-# yum install sos -y
+#yum install sos -y
 
 # harvesting
 echo "Recopilando status"
