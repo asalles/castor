@@ -1,5 +1,5 @@
 #!/bin/bash
-# CASTOR: Cautiva Audition Script "The Onlys Ricopileichor"
+# CASTOR: Cautiva Audit Script
 # v0.0
 #
 # ingenieria@cautivatech.com
