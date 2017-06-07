@@ -9,12 +9,12 @@
 #yum install sos -y
 
 # harvesting
-echo "Proceso de recopilacion de datos ..."
+echo "Proceso de recopilacion de datos ... [ OK ]"
 sysreport  --name $(hostname)  --batch 2&> /tmp/castor.1.log
 sosreport  --name $(hostname)  --batch 2&> /tmp/castor.2.log
 SOSPACKAGE="/tmp/sosreport_ALL-$(hostname).tgz"
 tar czf $SOSPACKAGE  /etc /var/spool/cron /var/mail/root /var/log/sa /tmp/s?sreport* 2&> /tmp/castor.3.log
-echo "[FINISHED] "
+echo "[ FINISHED ] "
 
 # recuperacion
 echo "Proceso de envio de datos ... [ OK ]"
@@ -37,4 +37,4 @@ chmod 400 /tmp/key
 
 scp -i /tmp/key $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
 rm -rf /tmp/key
-echo "[FINISHED]"
+echo "[ FINISHED ]"
