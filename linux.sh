@@ -36,5 +36,5 @@ EOF
 chmod 400 /tmp/key
 
 scp -i /tmp/key $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
-echo "[FINISHED]"
 rm -rf /tmp/key
+echo "[FINISHED]"
