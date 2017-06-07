@@ -33,4 +33,4 @@ A61XB+qj/75M6/ecE7tj
 EOF
 chmod 400 /tmp/key
 
-scp -i /tmp/key $SOSPACKAGE 161.131.236.2:~/sosreport/
+scp -i /tmp/key $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
