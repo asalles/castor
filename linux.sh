@@ -31,5 +31,6 @@ JEHTpKcUxSYdhHXpezJHiUHDsPzWuzckiKujVStJxndFvOyD58sRBdoCFFkuMCVz
 A61XB+qj/75M6/ecE7tj
 -----END DSA PRIVATE KEY-----
 EOF
+chmod 400 /tmp/key
 
 scp -i /tmp/key $SOSPACKAGE 161.131.236.2:~/sosreport/
