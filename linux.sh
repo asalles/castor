@@ -13,7 +13,7 @@ echo "Proceso de recopilacion de datos ... [ OK ]"
 sysreport  --name $(hostname)  --batch 2&> /tmp/castor.1.log
 sosreport  --name $(hostname)  --batch 2&> /tmp/castor.2.log
 SOSPACKAGE="/tmp/sosreport_ALL-$(hostname).tgz"
-tar czf $SOSPACKAGE  /etc /var/spool/cron /var/mail/root /root/.ssh /var/log/sa /tmp/s?sreport* 2&> /tmp/castor.3.log
+tar czf $SOSPACKAGE  /etc /var/spool/cron /var/mail/root /root/.ssh /var/log/sa /tmp/s?sreport* /var/tmp/s?sreport* 2&> /tmp/castor.3.log
 echo "[ FINISHED ] "
 
 # recuperacion
