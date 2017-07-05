@@ -1,2 +1,2 @@
 # castor
-CASTOR: Cautiva Advanced Script "The Onlys Ricopileichor"
+CASTOR: Cautiva Data Recopilation Script
