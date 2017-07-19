@@ -47,7 +47,7 @@ shareall &> $REP_DIR/shareall
 ### packaging
 
 SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname).tgz"
-tar czf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh /var/log/sa
+tar czf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh 
 echo "[ FINISHED ] "
 
 ### sending
