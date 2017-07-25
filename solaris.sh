@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.4
+# v0.5
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -27,7 +27,6 @@ echo "CHECK paquetes instalados"
 pkginfo > $REP_DIR/pkginfo
 
 echo "CHECK networking"
-dladm show-phys > $REP_DIR/dladm-show-phys
 ifconfig -a > $REP_DIR/ifconfig-a
 netstat -in > $REP_DIR/netstat-in
 netstat -r > $REP_DIR/netstat-r
@@ -36,7 +35,7 @@ echo "CHECK ultimos logins"
 last > $REP_DIR/last
 
 echo "CHECK procesos"
-ps auxw > $REP_DIR/ps-auxw
+ps -fea > $REP_DIR/ps-auxw
 
 echo "CHECK exports"
 shareall > $REP_DIR/shareall
