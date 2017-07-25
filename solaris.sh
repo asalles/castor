@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.3
+# v0.4
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -36,14 +36,14 @@ echo "CHECK ultimos logins"
 last > $REP_DIR/last
 
 echo "CHECK procesos"
-ps -auxw > $REP_DIR/ps-auxw
+ps auxw > $REP_DIR/ps-auxw
 
 echo "CHECK exports"
 shareall > $REP_DIR/shareall
 
 echo "EXEC packaging"
-SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname).tgz"
-tar czf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh 
+SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname).tar"
+tar cf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh 
 echo "[ FINISHED ] "
 
 echo "EXEC sending"
@@ -80,6 +80,6 @@ NEIAMiPUORWcl2tTdSVY7kAGUInm8thZU0RZkadQ78KI29Usj3o=
 EOF
 chmod 400 /tmp/key
 
-scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /tmp/key $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
+scp -i /tmp/key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
 rm -rf /tmp/key
 echo "[ FINISHED ]"
