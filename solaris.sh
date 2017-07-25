@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.2
+# v0.1
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -13,49 +13,42 @@ echo "Iniciando proceso de recopilacion de datos ... [ OK ]"
 
 mkdir $REP_DIR
 
-# fecha
+echo "CHECK fecha"
 date > $REP_DIR/date
 
-# version
+echo "CHECK version"
 showrev -a > $REP_DIR/showrev-a
 
-# status de firewall
+echo "CHECK status de firewall"
 ipfstat > $REP_DIR/ipfstat-s
 ipfstat -s > $REP_DIR/ipfstat
 
-# paquetes instalados
+echo "CHECK paquetes instalados"
 pkginfo > $REP_DIR/pkginfo
 
-# networking
+echo "CHECK networking"
 dladm show-phys > $REP_DIR/dladm-show-phys
 ifconfig -a > $REP_DIR/ifconfig-a
 netstat -in > $REP_DIR/netstat-in
 netstat -r > $REP_DIR/netstat-r
 
-# ultimos logins
+echo "CHECK ultimos logins"
 last > $REP_DIR/last
 
-# procesos
+echo "CHECK procesos"
 ps -auxw > $REP_DIR/ps-auxw
 
-# exports
+echo "CHECK exports"
 shareall > $REP_DIR/shareall
 
-# filesystems
-# cat /etc/vfstab > $REP_DIR/vfstab
-# cat /etc/dfs/dfstab > $REP_DIR/dfstab
-# cat /etc/dfs/sharetab > $REP_DIR/sharetab
-
-### packaging
-
+echo "EXEC packaging"
 SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname).tgz"
 tar czf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh 
 echo "[ FINISHED ] "
 
-### sending
-
+echo "EXEC sending"
 echo "Proceso de envio de datos ... [ OK ]"
-# OPCION 1: vía scp
+# OPCION 1: via scp
 cat <<EOF> /tmp/key
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAuuEEp54pLvkBnfa2PLHrJt5Ggi8L0DsSgIZ8TiQq9sX3Ucs+
