@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.1
+# v0.3
 # SOLARIS
 # ingenieria@cautivatech.com
 #
