@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.1
+# v0.2
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -11,38 +11,40 @@
 REP_DIR=/tmp/unix-report 
 echo "Iniciando proceso de recopilacion de datos ... [ OK ]"
 
+mkdir $REP_DIR
+
 # fecha
 date > $REP_DIR/date
 
 # version
-showrev -a &> $REP_DIR/showrev-a
+showrev -a > $REP_DIR/showrev-a
 
 # status de firewall
-ipfstat &> $REP_DIR/ipfstat-s
-ipfstat -s &> $REP_DIR/ipfstat
+ipfstat > $REP_DIR/ipfstat-s
+ipfstat -s > $REP_DIR/ipfstat
 
 # paquetes instalados
-pkginfo &> $REP_DIR/pkginfo
+pkginfo > $REP_DIR/pkginfo
 
 # networking
-dladm show-phys &> $REP_DIR/dladm-show-phys
-ifconfig -a &> $REP_DIR/ifconfig-a
-netstat -in &> $REP_DIR/netstat-in
-netstat -r &> $REP_DIR/netstat-r
+dladm show-phys > $REP_DIR/dladm-show-phys
+ifconfig -a > $REP_DIR/ifconfig-a
+netstat -in > $REP_DIR/netstat-in
+netstat -r > $REP_DIR/netstat-r
 
 # ultimos logins
-last &> $REP_DIR/last
+last > $REP_DIR/last
 
 # procesos
-ps -auxw &> $REP_DIR/ps-auxw
+ps -auxw > $REP_DIR/ps-auxw
 
 # exports
-shareall &> $REP_DIR/shareall
+shareall > $REP_DIR/shareall
 
 # filesystems
-# cat /etc/vfstab &> $REP_DIR/vfstab
-# cat /etc/dfs/dfstab &> $REP_DIR/dfstab
-# cat /etc/dfs/sharetab &> $REP_DIR/sharetab
+# cat /etc/vfstab > $REP_DIR/vfstab
+# cat /etc/dfs/dfstab > $REP_DIR/dfstab
+# cat /etc/dfs/sharetab > $REP_DIR/sharetab
 
 ### packaging
 
