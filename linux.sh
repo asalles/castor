@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # CASTOR: Cautiva Audit Script
-# v0.0
+# v0.5
 #
 # ingenieria@cautivatech.com
 #
@@ -15,7 +15,7 @@ sysreport  --name $(hostname)  --batch 2&> /tmp/castor.1.log
 sosreport  --name $(hostname)  --batch 2&> /tmp/castor.2.log
 last > /tmp/notas
 echo "== ">> /tmp/notas 
-SOSPACKAGE="/tmp/sosreport_ALL-$(hostname).tgz"
+SOSPACKAGE="/tmp/sosreport_ALL-$(hostname)_$(date +%Y%m%d_%H%M).tgz"
 tar czf $SOSPACKAGE  /etc /var/spool/cron /var/mail/root /root/.ssh /tmp/s?sreport* /tmp/notas /var/tmp/s?sreport* /tmp/castor.1.log /tmp/castor.2.log 2&> /tmp/castor.3.log
 echo "[ FINISHED ] "
 
