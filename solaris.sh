@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.6
+# v0.7
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -41,7 +41,7 @@ echo "CHECK exports"
 shareall > $REP_DIR/shareall
 
 echo "EXEC packaging"
-SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname).tar"
+SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname)_$(date +%Y%m%d_%H%M).tar"
 tar cf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh /.ssh /.bash_history /.profile
 echo "[ FINISHED ] "
 
