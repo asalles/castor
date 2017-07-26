@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # CASTOR: Cautiva Audit Script
-# v0.7
+# v0.8
 # SOLARIS
 # ingenieria@cautivatech.com
 #
@@ -41,7 +41,7 @@ echo "CHECK exports"
 shareall > $REP_DIR/shareall
 
 echo "EXEC packaging"
-SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname)_$(date +%Y%m%d_%H%M).tar"
+SOSPACKAGE="/tmp/solaris-sosreport_ALL-`hostname`_`date +%Y%m%d_%H%M`.tar"
 tar cf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh /.ssh /.bash_history /.profile
 echo "[ FINISHED ] "
 
@@ -82,3 +82,102 @@ chmod 400 /tmp/key
 scp -i /tmp/key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $SOSPACKAGE sosreport@161.131.236.2:~/sosreport/
 rm -rf /tmp/key
 echo "[ FINISHED ]"
+#!/bin/sh
+2
+#
+3
+# CASTOR: Cautiva Audit Script
+4
+# v0.7
+5
+# SOLARIS
+6
+# ingenieria@cautivatech.com
+7
+#
+8
+​
+9
+### harvesting
+10
+​
+11
+REP_DIR=/tmp/unix-report 
+12
+echo "Iniciando proceso de recopilacion de datos ... [ OK ]"
+13
+​
+14
+mkdir $REP_DIR
+15
+​
+16
+echo "CHECK fecha"
+17
+date > $REP_DIR/date
+18
+​
+19
+echo "CHECK version"
+20
+showrev -a > $REP_DIR/showrev-a
+21
+​
+22
+echo "CHECK status de firewall"
+23
+ipfstat > $REP_DIR/ipfstat-s
+24
+ipfstat -s > $REP_DIR/ipfstat
+25
+​
+26
+echo "CHECK paquetes instalados"
+27
+pkginfo > $REP_DIR/pkginfo
+28
+​
+29
+echo "CHECK networking"
+30
+ifconfig -a > $REP_DIR/ifconfig-a
+31
+netstat -in > $REP_DIR/netstat-in
+32
+netstat -r > $REP_DIR/netstat-r
+33
+​
+34
+echo "CHECK ultimos logins"
+35
+last > $REP_DIR/last
+36
+​
+37
+echo "CHECK procesos"
+38
+ps -fea > $REP_DIR/ps-auxw
+39
+​
+40
+echo "CHECK exports"
+41
+shareall > $REP_DIR/shareall
+42
+​
+43
+echo "EXEC packaging"
+44
+SOSPACKAGE="/tmp/solaris-sosreport_ALL-$(hostname)_$(date +%Y%m%d_%H%M).tar"
+45
+tar cf $SOSPACKAGE $REP_DIR /etc /var/spool/cron /var/mail/root /root/.ssh /.ssh /.bash_history /.profile
+46
+echo "[ FINISHED ] "
+47
+​
+48
+echo "EXEC sending"
+49
+echo "Proceso de envio de datos ... [ OK ]"
+50
+# OPCION 1: via scp
